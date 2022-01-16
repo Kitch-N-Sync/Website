@@ -1,0 +1,43 @@
+#MaxThreadsPerHotkey 1
+Coordmode, Mouse, Screen
+Coordmode, Pixel, Screen
+
+;Variables
+Range := 20
+ColorRange := 25
+
+
+^0::
+;Getting Coordinates for button
+Gui, add, edit, h100 , Please click next button during color change
+Gui, Show
+
+Keywait, LButton, Down
+MouseGetPos, CenterX, CenterY
+PixelGetColor, CenterColor, %CenterX%, %CenterY%
+
+Gui, Destroy
+
+
+;Main Loop
+Loop
+{
+	X1 := CenterX - Range
+	Y1 := CenterY - Range
+	X2 := CenterX + Range
+	Y2 := CenterY + Range
+	PixelSearch, ColorMatchX, ColorMatchY, %X1%, %Y1%, %X2%, %Y2%, %CenterColor%, ColorRange, Fast
+
+	If (ColorMatchX != "" and ColorMatchY != "")
+	{
+		MouseGetPos, ReturnX, ReturnY
+		MouseMove, %CenterX%, %CenterY%
+		Click, Left
+		MouseMove, %ReturnX%, %ReturnY%
+		Sleep 3000
+	}
+Sleep 500
+}
+return
+
+^esc:: ExitApp

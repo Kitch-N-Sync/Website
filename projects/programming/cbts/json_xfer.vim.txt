@@ -1,0 +1,16 @@
+%s/^\t*//g
+%s/^\(\(screenNumber\|text\|beforeAnswer\|afterAnswer\)\@!.\)*$//g
+%s/"//g
+%s/.*(Cont.).*//g
+%s/.*text,.*//g
+%s/\\n/ /g
+g/^$/d
+%s/^/\t&
+%s/^\t.*screenTitle: //
+%s/.*correct: true, text: /\t\*/
+%s/.*\(text\|afterAnswer\): /\t/
+%s/beforeAnswer/Question/
+%s/\},$//g
+%s/<.\{-}>//g
+:1d
+set wrap linebreak

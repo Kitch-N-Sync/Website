@@ -1,0 +1,100 @@
+/* CSS is how you can add style to your website, such as colors, fonts, and positioning of your
+   HTML content. To learn how to do something, just try searching Google for questions like
+   "how to change link color." */
+
+@font-face {
+  font-family: 'DejaVuSansMono';
+  src:
+    url('/fonts/dejavu/DejaVuSansMono.woff') format('woff'),
+    url('/fonts/dejavu/DejaVuSansMono.ttf') format('truetype');
+}
+
+body {
+  /*background-image: url("images/backgrounds/green_cyber_background.jpg");*/
+  background-image: url("images/tiles/green_gridx2.gif");
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+a {
+  color: #5000ff
+}
+
+.main{
+  background-color: #111111;
+  color: #00bb00;
+  font-family: "DejaVuSansMono";
+  margin: 10px;
+  padding: 10px;
+}
+
+.nav{
+  border-color: #00bb00;
+  border-width: 2px;
+  border-style: solid;
+}
+
+ul.nav {  
+  padding: 10px;
+  background-image: url("./images/tiles/greengrid.jpg");
+  background-repeat: repeat;
+  background-attachment: fixed;
+  }
+  
+a.nav {
+  color: #ff33ff;
+  background-color: #111111;
+  padding: 2px;
+}
+
+p.nav {
+  color: #ff33ff;
+  background-color: #005500;
+  padding: 2px;
+  display: inline;
+}
+
+.construction {
+  width: 15px;
+  vertical-align: middle;
+}
+
+.il {
+  list-style-type: none;
+  display: inline;
+}
+
+.ascii-art {
+  font-family: "DejaVuSansMono";
+  white-space: pre;
+}
+
+.smallbanner{
+  width: 25vw;
+  max-width: 176px;
+  vertical-align: top;
+}
+
+.tinybanner{
+  width: 88px;
+  vertical-align: top;
+}
+
+.bigpic{
+  width: 20%;
+  padding: 10px;
+}
+
+/*Screen size is 1001px wide or more*/
+@media screen and (min-width: 1001px) {
+  .ascii-art {
+    font-size: 20px;
+  }
+}
+
+/*Screen size is 1000px wide or less*/
+@media screen and (max-width: 1000px) {
+  .ascii-art {
+    font-size:2vw;
+  }
+}

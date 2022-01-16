@@ -1,0 +1,13 @@
+%s/^\t*//g
+%s/^\(\(screenNumber\|text\|lessonTitle\)\@!.\)*$//g
+%s/"//g
+%s/lessonTitle: //g
+g/^$/d
+%s/screenNumber: \(\d\+\),/Question \1/g
+%s/.*question,.*text: //g
+%s/.*correct.*text: /\t\*/g
+%s/.*text: /\t/g
+%s/},*//g
+%s/<super>/^/g
+%s/<.\{-}>//g
+set wrap linebreak

@@ -1,0 +1,85 @@
+^9::
+trainWin_title :=
+trainWin_w := 0
+trainWin_h := 0
+
+WinGetTitle, trainWin_title, A
+WinGetPos, , , trainWin_w, trainWin_h, %trainWin_title%
+
+trainWin_w /= 2
+trainWin_h /= 2
+
+Click %trainWin_w% %trainWin_h% Right
+Loop, 3
+{
+Send {Up}
+}
+Send {Enter}
+Sleep 1000
+Send ^f
+Send Lesson
+Send {Esc}
+Loop, 5
+{
+Send ^+{Right}
+}
+Send ^c
+Send ^l
+Send {End}
+Loop, 4
+{
+Send ^{BS}
+}
+Send ^v
+Send {Enter}
+Sleep 1000
+
+
+^Home::
+tempString := ""
+fullString := ""
+pageCount := 8
+
+While !Instr(tempString,"404 - File or directory not found")
+{
+	pageCount += 1
+	Send ^a
+	Send ^c
+	tempString := clipboard
+	fullString := fullString tempString
+	Send ^l
+	Send {End}
+	Send ^{Left}
+	Send {Left}
+	Send {Backspace 2}
+	If pageCount<10
+	{
+		Send 0
+	}
+	Send %pageCount%
+	Send {Enter}
+	Sleep 1000
+}
+
+fullString := fullString tempString
+Msgbox, 404 Found
+
+FileAppend, %fullString%, Temp.json
+
+Send ^l
+Send {End}
+Send ^{Left}
+Send {Left}
+Send {BS}
+Send {BS}
+Send Q
+Send {Enter}
+Sleep 1000
+
+Send ^a
+Send ^c
+
+FileAppend, %clipboard%, Temp.quiz
+
+
+Return
